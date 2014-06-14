@@ -10,45 +10,98 @@ function initialize() {
         zoom: 13,
         center: manhattan,
         styles: [{
+            "featureType": "administrative",
+            "elementType": "labels",
             "stylers": [{
-                "saturation": -100
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "administrative.country",
+            "elementType": "geometry.stroke",
+            "stylers": [{
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "administrative.province",
+            "elementType": "geometry.stroke",
+            "stylers": [{
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "landscape",
+            "elementType": "geometry",
+            "stylers": [{
+                "visibility": "on"
+            }, {
+                "color": "#e3e3e3"
+            }]
+        }, {
+            "featureType": "landscape.natural",
+            "elementType": "labels",
+            "stylers": [{
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "poi",
+            "elementType": "all",
+            "stylers": [{
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "road",
+            "elementType": "all",
+            "stylers": [{
+                "color": "#fa9e25"
+            }]
+        }, {
+            "featureType": "road",
+            "elementType": "labels",
+            "stylers": [{
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "transit",
+            "elementType": "labels.icon",
+            "stylers": [{
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "transit.line",
+            "elementType": "geometry",
+            "stylers": [{
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "transit.line",
+            "elementType": "labels.text",
+            "stylers": [{
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "transit.station.airport",
+            "elementType": "geometry",
+            "stylers": [{
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "transit.station.airport",
+            "elementType": "labels",
+            "stylers": [{
+                "visibility": "off"
             }]
         }, {
             "featureType": "water",
-            "elementType": "geometry.fill",
+            "elementType": "geometry",
             "stylers": [{
-                "color": "#0099dd"
+                "color": "#FFFFFF"
             }]
         }, {
+            "featureType": "water",
             "elementType": "labels",
             "stylers": [{
                 "visibility": "off"
             }]
-        }, {
-            "featureType": "poi.park",
-            "elementType": "geometry.fill",
-            "stylers": [{
-                "color": "#aadd55"
-            }]
-        }, {
-            "featureType": "road.highway",
-            "elementType": "labels",
-            "stylers": [{
-                "visibility": "off"
-            }]
-        }, {
-            "featureType": "road.arterial",
-            "elementType": "labels.text",
-            "stylers": [{
-                "visibility": ""
-            }]
-        }, {
-            "featureType": "road.local",
-            "elementType": "labels.text",
-            "stylers": [{
-                "visibility": "on"
-            }]
-        }, {}]
+        }]
     };
 
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -70,19 +123,19 @@ function calcRoute() {
     console.log(end);
     var selectedMode = document.getElementById('mode').value;
     var request = {
-      origin: start,
-      destination: end,
-      travelMode: google.maps.TravelMode[selectedMode]
+        origin: start,
+        destination: end,
+        travelMode: google.maps.TravelMode[selectedMode]
     };
     directionsService.route(request, function (response, status) {
-      if (status == google.maps.DirectionsStatus.OK) {
-        embiggenRoute(response.routes[0]);
-        directionsDisplay.setDirections(response);
-      }
+        if (status == google.maps.DirectionsStatus.OK) {
+            embiggenRoute(response.routes[0]);
+            directionsDisplay.setDirections(response);
+        }
     });
 }
 
-$("body").on("click",".nav li",function(){
-  $(this).addClass("active");
+$("body").on("click", ".nav li", function () {
+    $(this).addClass("active");
 });
 google.maps.event.addDomListener(window, 'load', initialize);
