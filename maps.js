@@ -3,6 +3,7 @@ var directionsDisplay;
 var directionsService;
 var stepDisplay;
 var markerArray = [];
+var catdata = "";
 
 function initialize() {
   // Instantiate a directions service.
@@ -70,7 +71,7 @@ function showSteps(directionResult) {
       position: myRoute.steps[i].start_location,
       map: map
     });
-    attachInstructionText(marker, myRoute.steps[i].instructions);
+    attachInstructionText(marker, myRoute.steps[i].instructions + " Shy's Placeholder text");
     markerArray[i] = marker;
   }
 }
