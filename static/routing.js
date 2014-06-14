@@ -4,12 +4,14 @@ var minutesDelayed;
 var minutesExcused;
 var waypoints;
 var excusesUsed;
+var availableExcuses;
 
 function clearRouting() {
   minutesDelayed = 60;
   minutesExcused = 0;
   waypoints = [];
   excusesUsed = [];
+  availableExcuses = $.extend(true, {}, allExcuses);
 }
 
 function embiggenRoute(route) {
@@ -33,9 +35,12 @@ function addExcuse(step) {
 
 function excuseNear(location) {
   // A really naive search for the nearest excuse. We're defining close as smallest delta in lat + long
-  return _.min(allExcuses, function(excuse) {
+  var nearestExcuse = _.min(availableExcuses, function(excuse) {
     return google.maps.geometry.spherical.computeDistanceBetween(locationToLatLng(location), locationToLatLng(excuse["location"]), 1);
   });
+  // Get rid of duplicates
+  availableExcuses = _.reject(availableExcuses, function(excuse) { return excuse.id == nearestExcuse.id });
+  return nearestExcuse;
 }
 
 function locationToLatLng(location) {
