@@ -131,6 +131,7 @@ function calcRoute() {
         if (status == google.maps.DirectionsStatus.OK) {
             embiggenRoute(response.routes[0]);
             directionsDisplay.setDirections(response);
+            document.getElementById('intro').innerHTML = '';
         }
     });
 }
