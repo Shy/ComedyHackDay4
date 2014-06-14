@@ -40,7 +40,7 @@ function findExcuses() {
 function pinpointExcuses() {
   // Search for excuses by name and record the exact latitude/longitude if we find a match
   _.each(allExcuses, function(excuse) {
-    var request = { query: excuse["name"], location: manhattan }
+    var request = { query: excuse["name"], location: manhattan, radius: 1 }
     service.textSearch(request, function(results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         excuse["location"] = locationToLatLng(results[0].geometry.location);
