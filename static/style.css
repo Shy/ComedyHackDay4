@@ -61,11 +61,9 @@ background: #fa9e25; /* Old browsers */
 	border-bottom:thin solid #faa519;
 	text-shadow:none;}
 
-
-
-
-
-
+body {
+    padding-top: 50px;
+}
 
 /* title */
 .navbar-default .navbar-brand {
