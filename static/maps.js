@@ -62,6 +62,8 @@ function initialize() {
 function calcRoute() {
     var start = document.getElementById('start').value;
     var end = document.getElementById('end').value;
+    console.log(start);
+    console.log(end);
     var selectedMode = document.getElementById('mode').value;
     var request = {
         origin: start,
@@ -75,5 +77,7 @@ function calcRoute() {
         }
     });
 }
-
+$("body").on("click",".nav li",function(){
+        $(this).addClass("active");
+});
 google.maps.event.addDomListener(window, 'load', initialize);
