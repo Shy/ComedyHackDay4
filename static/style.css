@@ -5,7 +5,8 @@ a,p,input,button,select,td{
 html, body, #map-canvas {
         height: 100%;
         margin: 0px;
-        padding: 0px
+        padding: 0px;
+		font-size:16px;
       }
 #panel {
     position: absolute;
@@ -51,12 +52,26 @@ html, body, #map-canvas {
 }
 
 .navbar-default {
-    background-color: #F8F8F8;
+    background-color: #fa9e25;
     border-color: #E7E7E7;
 }
+.navbar.navbar-default.navbar-fixed-top {
+background: #fa9e25; /* Old browsers */
+	color:#ffffff;
+	border-bottom:thin solid #faa519;
+	text-shadow:none;}
+
+
+
+
+
+
+
 /* title */
 .navbar-default .navbar-brand {
-    color: #777;
+    color: #ffffff;
+	text-shadow:none;
+	font-size:24px;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
@@ -68,7 +83,7 @@ html, body, #map-canvas {
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    color: #333;
+    color: #999;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
@@ -108,6 +123,17 @@ html, body, #map-canvas {
 }
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #CCC;
+}
+button.btn.btn-default {
+	background-color: #00b3fd;
+	background-image:none;
+	color:#ffffff;
+	text-shadow:none;
+	font-size:16px;
+	border:none;
+}
+.form-group {
+	border:none;
 }
 @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
