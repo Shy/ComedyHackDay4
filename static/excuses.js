@@ -33,10 +33,43 @@ function findExcuses() {
                 id: "3",
                 name: "Santos Party House",
                 location: "",
-                description: "Party shortage",
-                text: "The house is running dangerously low on party",
+                description: "Knife Fight",
+                text: "Two homeless guys came up and asked for money at the same time and got into a knife fight in front of me.",
                 delayInMinutes: 35
+              },
+              {
+                id: "4",
+                name: "Burger King, NYC",
+                location: "",
+                description: "Burger King",
+                text: "I stopped into a Burger King to pick up food and the place got robbed.",
+                delayInMinutes: 35
+              },
+              {
+                id: "5",
+                name: "Indian Point Energy Center",
+                location: "",
+                description: "Indian Point Energy Center",
+                text: "The nuclear power plant upstate melted down and my route was filled with mutant cannibals.",
+                delayInMinutes: 90
+              },
+              {
+                id: "6",
+                name: "Father Day",
+                location: "",
+                description: "Times Square",
+                text: "I literally hurt myself fake laughing at all my dad’s terrible jokes.",
+                delayInMinutes: 45
+              },
+              {
+                id: "7",
+                name: "NYU",
+                location: "",
+                description: "NYU",
+                text: "I walked by a school when I saw a kid crying. So I stopped for ten minutes and it turned out he was having girl problems. I gave him some of my homespun wisdom that really changed his life forever. No big deal, it doesn’t make me a hero or nothing.",
+                delayInMinutes: 10
               }
+
             ];
             var temp = {
               id: "1",
@@ -66,6 +99,7 @@ function pinpointExcuses() {
     var request = { query: excuse["name"], location: manhattan, radius: 1 }
     service.textSearch(request, function(results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
+        // TODO - Find the closest
         excuse["location"] = locationToLatLng(results[0].geometry.location);
         console.log(excuse["location"]);
       }
