@@ -18,6 +18,8 @@ function embiggenRoute(route) {
   _.each(route.legs, function(leg, index) {
     if (index < excusesUsed.length) {
       leg.steps[leg.steps.length - 1].instructions += formatExcuse(excusesUsed[index]);
+      leg.duration.value = excusesUsed[index]["delayInMinutes"] * 60;
+      leg.duration.text = formatExcuseDuration(excusesUsed[index]["delayInMinutes"]);
     }
     _.each(leg.steps, function(step) {
       if (minutesExcused < minutesDelayed)
@@ -49,4 +51,28 @@ function locationToLatLng(location) {
 
 function formatExcuse(excuse) {
   return "<span style=color:#555;font-size:18px;line-height:20px;margin-bottom:10px;><br /><br />" + excuse["description"] + " at " + excuse["name"] + "<br />" + excuse["text"] + "</span>";
+}
+
+function formatExcuseDuration(minutes) {
+  // So gross but no time left!
+  var formattedDuration = "";
+  var days = Math.floor(minutes / 86400);
+  if (days > 0) {
+    minutes -= days * 86400;
+    formattedDuration += days + " day";
+    if (formattedDuration != 1) { formattedDuration += "s"; }
+    formattedDuration += " ";
+  };
+  var hours = Math.floor(minutes / 60);
+  if (hours > 0) {
+    minutes -= hours * 60;
+    formattedDuration += hours + " hour";
+    if (formattedDuration != 1) { formattedDuration += "s"; }
+    formattedDuration += " ";
+  }
+  if (minutes > 0) {
+    formattedDuration += minutes + " minute";
+    if (formattedDuration != 1) { formattedDuration += "s"; }
+  }
+  return formattedDuration;
 }
