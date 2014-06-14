@@ -12,7 +12,7 @@ function findExcuses() {
   allExcuses = [
     {
       id: "1",
-      name: "The Meatball Shop",
+      name: "Liquidnet Holdings",
       location: "",
       description: "Dropped balls",
       text: "Many dropped meatball related injuries on Greenwich Ave",
@@ -43,6 +43,7 @@ function pinpointExcuses() {
     var request = { query: excuse["name"], location: manhattan, radius: 1 }
     service.textSearch(request, function(results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
+        // TODO - Select the closest of the results
         excuse["location"] = locationToLatLng(results[0].geometry.location);
       }
     });

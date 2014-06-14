@@ -2,23 +2,33 @@ var geocoder = new google.maps.Geocoder();
 
 var minutesDelayed;
 var minutesExcused;
+var waypoints;
+var excusesUsed;
 
 function clearRouting() {
   minutesDelayed = 60;
   minutesExcused = 0;
+  waypoints = [];
+  excusesUsed = [];
 }
 
 function embiggenRoute(route) {
-  _.each(route.legs[0].steps, function(step) {
-    if (minutesExcused < minutesDelayed)
-      addExcuse(step);
+  _.each(route.legs, function(leg, index) {
+    if (index < excusesUsed.length) {
+      leg.steps[leg.steps.length - 1].instructions += formatExcuse(excusesUsed[index]);
+    }
+    _.each(leg.steps, function(step) {
+      if (minutesExcused < minutesDelayed)
+        addExcuse(step);
+    });
   });
 }
 
 function addExcuse(step) {
   var closestExcuse = excuseNear(step.start_location);
-  step.instructions += formatExcuse(closestExcuse);
   minutesExcused += closestExcuse["delayInMinutes"];
+  excusesUsed.push(closestExcuse);
+  waypoints.push({ location: closestExcuse.location, stopover: true });
 }
 
 function excuseNear(location) {

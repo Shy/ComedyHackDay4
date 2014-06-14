@@ -122,17 +122,31 @@ function calcRoute() {
     console.log(start);
     console.log(end);
     var selectedMode = document.getElementById('mode').value;
-    var request = {
-        origin: start,
-        destination: end,
-        travelMode: google.maps.TravelMode[selectedMode]
-    };
-    directionsService.route(request, function (response, status) {
-        if (status == google.maps.DirectionsStatus.OK) {
-            embiggenRoute(response.routes[0]);
-            directionsDisplay.setDirections(response);
-        }
-    });
+    requestRoute(start, end, selectedMode);
+}
+
+function requestRoute(start, end, mode) {
+  // Get directions from Google from start to end
+  var minutesAlreadyExcused = minutesExcused;
+  var request = {
+    origin: start,
+    destination: end,
+    travelMode: google.maps.TravelMode[mode],
+    waypoints: waypoints
+  };
+
+  // Add excuses to the suggested route. If we find one, it will be added to waypoints
+  // and will add to the minutesExcused. We'll keep rerouting this way until we hit
+  // the excuse threshold.
+  directionsService.route(request, function (response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      embiggenRoute(response.routes[0]);
+      if (minutesAlreadyExcused == minutesExcused)
+        directionsDisplay.setDirections(response);
+      else
+        requestRoute(start, end, mode);
+    }
+  });
 }
 
 $("body").on("click", ".nav li", function () {
