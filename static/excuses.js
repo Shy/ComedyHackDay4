@@ -55,7 +55,7 @@ function findExcuses() {
               },
               {
                 id: "6",
-                name: "Father Day",
+                name: "Father Day Lunch",
                 location: "",
                 description: "Times Square",
                 text: "I literally hurt myself fake laughing at all my dad’s terrible jokes.",
@@ -63,11 +63,51 @@ function findExcuses() {
               },
               {
                 id: "7",
-                name: "NYU",
+                name: "NYU Romance",
                 location: "",
                 description: "NYU",
                 text: "I walked by a school when I saw a kid crying. So I stopped for ten minutes and it turned out he was having girl problems. I gave him some of my homespun wisdom that really changed his life forever. No big deal, it doesn’t make me a hero or nothing.",
                 delayInMinutes: 10
+              },
+              {
+                id: "8",
+                name: "Union Square Ice Cream",
+                location: "",
+                description: "Union Square",
+                text: "An ice cream truck pulled up next to Union Square as I was walking past, and I got blocked by a mob of little kids.",
+                delayInMinutes: 20
+              },
+              {
+                id: "9",
+                name: "Candy Broadway",
+                location: "",
+                description: "Candy Broadway",
+                text: "I walked past a public school and a bunch of kids stopped me to try to sell me candy to raise money for their basketball team.",
+                delayInMinutes: 10
+              },
+              {
+                id: "10",
+                name: "nyc public schools",
+                location: "",
+                description: "NYU",
+                text: "I walked past a school just as the cops busted a teacher for selling weed to kids.",
+                delayInMinutes: 14
+              },
+              {
+                id: "11",
+                name: "Driving Police Stop 6th Ave",
+                location: "",
+                description: "Driving Police Stop 6th Ave",
+                text: "A school bus stopped with its lights flashing, and stayed there for twenty minutes. I was about to drive past when a cop car pulled up behind me.",
+                delayInMinutes: 30
+              },
+              {
+                id: "12",
+                name: "School Bus Crash",
+                location: "",
+                description: "School Bus Crash",
+                text: "I was driving past a school just as the school bus crashed into the car ahead of it. I had to help evacuate the kids and make sure they were okay. No big deal, I didn’t even stick around because I’m not looking for a medal or anything.",
+                delayInMinutes: 58
               }
 
             ];
