@@ -56,11 +56,14 @@ function initialize() {
     directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
     var control = document.getElementById('control');
-    control.style.display = 'block';
+    // control.style.display = 'block';
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+
+    loadExcuses();
 }
 
 function calcRoute() {
+    clearRouting();
     var start = document.getElementById('start').value;
     var end = document.getElementById('end').value;
     console.log(start);
@@ -73,7 +76,8 @@ function calcRoute() {
     };
     directionsService.route(request, function (response, status) {
       if (status == google.maps.DirectionsStatus.OK) {
-        directionsDisplay.setDirections(embiggenRoute(response));
+        embiggenRoute(response.routes[0]);
+        directionsDisplay.setDirections(response);
       }
     });
 }

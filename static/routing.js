@@ -9,12 +9,10 @@ function clearRouting() {
 }
 
 function embiggenRoute(route) {
-  _.each(route.steps, function(step) {
+  _.each(route.legs[0].steps, function(step) {
     if (minutesExcused < minutesDelayed)
       addExcuse(step);
   });
-
-  return route;
 }
 
 function addExcuse(step) {
