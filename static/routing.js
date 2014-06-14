@@ -48,5 +48,5 @@ function locationToLatLng(location) {
 }
 
 function formatExcuse(excuse) {
-  return "<span style=color:#555;font-size:14px;line-height:20px;margin-bottom:10px;><br /><br />" + excuse["description"] + " at " + excuse["name"] + "<br />" + excuse["text"] + "</span>";
+  return "<span style=color:#555;font-size:18px;line-height:20px;margin-bottom:10px;><br /><br />" + excuse["description"] + " at " + excuse["name"] + "<br />" + excuse["text"] + "</span>";
 }
