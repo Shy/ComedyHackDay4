@@ -132,6 +132,7 @@ function calcRoute() {
             embiggenRoute(response.routes[0]);
             directionsDisplay.setDirections(response);
             document.getElementById('intro').innerHTML = '';
+            document.getElementById('intro').style.padding = "0px 0px 0px 0px";;
         }
     });
 }
