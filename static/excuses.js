@@ -9,6 +9,7 @@ function loadExcuses() {
 
 function findExcuses() {
   // Ultimately these should be scraped from the internet
+
   allExcuses = [
     {
       id: "1",
@@ -35,6 +36,31 @@ function findExcuses() {
       delayInMinutes: 35
     }
   ];
+
+  $.ajax({
+       url: "https://api.cityofnewyork.us/calendar/v1/search.htm?app_id=42f90643&app_key=84cb038ba9b973f9f117c6b8d60af69b&startDate=06%2F13%2F2014+01%3A00+AM&endDate=06%2F14%2F2014+11%3A00+PM",
+        dataType: 'jsonp',
+        success: function(data){
+            temp = {
+              id: "1",
+              name: "The Meatball Shop",
+              location: "",
+              description: "Dropped balls",
+              text: "Many dropped meatball related injuries on Greenwich Ave",
+              delayInMinutes: 10
+            };
+            for (var key in data.items) {
+              temp.name = data.items[key].name;
+              temp.description = data.items[key].location;
+              temp.text = data.items[key].shortDesc;
+              temp.delayInMinutes = Math.floor((Math.random() * 90) + 1);
+              allExcuses.push(temp);
+            }
+         }
+  });
+  console.log(allExcuses);
+
+
 }
 
 function pinpointExcuses() {
