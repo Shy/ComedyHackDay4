@@ -99,6 +99,7 @@ function pinpointExcuses() {
     var request = { query: excuse["name"], location: manhattan, radius: 1 }
     service.textSearch(request, function(results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
+        // TODO - Find the closest
         excuse["location"] = locationToLatLng(results[0].geometry.location);
         console.log(excuse["location"]);
       }
