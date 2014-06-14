@@ -4,34 +4,63 @@
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Comedy Hack Day 4</title>
-    <link rel="stylesheet" type="text/css" href="static/style.css">
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp?key=AIzaSyCGTOpcA3Rg8G_q65l2ru4i68mPlpoC0d8" type="text/javascript"></script>
+    <title>Xcuseme</title>
+    <link href='http://fonts.googleapis.com/css?family=Archivo+Narrow:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
-    <script src="static/maps.js" type="text/javascript"></script>
+    <script src="static/maps.js"></script>
     <script src="static/routing.js"></script>
     <script src="static/excuses.js"></script>
     <script src="static/underscore.js"></script>
-    <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
 </head>
 
 <body>
-    <div id="panel">
-        <b>Start: </b>
-        <input type="text" id="start" name="Start" value="500 7th Ave, NYC">
-        <b>End: </b>
-        <input type="text" id="end" name="end" value="1 Wall St, New York, NY">
-        <select id="mode">
-            <option value="WALKING">Walking</option>
-            <option value="BICYCLING">Bicycling</option>
-            <option value="TRANSIT"s>Transit</option>
-            <option value="DRIVING">Driving</option>
-        </select>
-        <button onclick="calcRoute()">Submit</button>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Xcuseme</a>
+            </div>
+            <div class="navbar-collapse collapse">
+
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="start" name="Start" placeholder="start">
+                        <input type="text" class="form-control" id="end" name="end" placeholder="end">
+                        <select id="mode" class="form-control">
+                            <option value="30">>30 Minutes Late</option>
+                            <option value="60">An Hour Late</option>
+                            <option value="240" s>Half A Work Day Late</option>
+                            <option value="1440">A Day Late</option>
+                            <option value="10080">A Week Late</option>
+                            <option value="525949">A Year Late</option>
+                        </select>
+                        <select id="mode" class="form-control">
+                            <option value="WALKING">Walking</option>
+                            <option value="BICYCLING">Bicycling</option>
+                            <option value="TRANSIT" s>Transit</option>
+                            <option value="DRIVING">Driving</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-default" onclick="calcRoute();return false;">Submit</button>
+                </form>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
     </div>
+    <div id="directions-panel"></div>
     <div id="map-canvas"></div>
-    &nbsp;
-    <div id="warnings_panel" style="width:100%;height:10%;text-align:center"></div>
 </body>
 
 </html>
