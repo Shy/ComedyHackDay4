@@ -135,6 +135,9 @@ button.btn.btn-default {
 .form-group {
 	border:none;
 }
+tbody tr {padding:40px;box-sizing:border-box;-moz-box-sizing:border-box;}
+.adp-step {padding:20px;box-sizing:border-box;-moz-box-sizing:border-box;}
+
 @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
         color: #777;
