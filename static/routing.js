@@ -17,9 +17,9 @@ function clearRouting() {
 function embiggenRoute(route) {
   _.each(route.legs, function(leg, index) {
     if (index < excusesUsed.length) {
-      leg.steps[leg.steps.length - 1].instructions += formatExcuse(excusesUsed[index]);
       leg.duration.value = excusesUsed[index]["delayInMinutes"] * 60;
       leg.duration.text = formatExcuseDuration(excusesUsed[index]["delayInMinutes"]);
+      leg.steps[leg.steps.length - 1].instructions += formatExcuse(excusesUsed[index]);
     }
     _.each(leg.steps, function(step) {
       if (minutesExcused < minutesDelayed)
@@ -50,7 +50,7 @@ function locationToLatLng(location) {
 }
 
 function formatExcuse(excuse) {
-  return "<span style=color:#555;font-size:18px;line-height:20px;margin-bottom:10px;><br /><br />" + excuse["description"] + " at " + excuse["name"] + "<br />" + excuse["text"] + "</span>";
+  return "<span style=color:#555;font-size:18px;line-height:20px;margin-bottom:10px;><br />" + excuse["description"] + " at " + excuse["name"] + "<br />" + excuse["text"] + "<br />" + flavor() + formatExcuseDuration(excuse["delayInMinutes"]) + " wasted!</span>";
 }
 
 function formatExcuseDuration(minutes) {
@@ -75,4 +75,8 @@ function formatExcuseDuration(minutes) {
     if (formattedDuration != 1) { formattedDuration += "s"; }
   }
   return formattedDuration;
+}
+
+function flavor() {
+  return _.sample(["Nice! ", "Awwww yeeeaaah! ", "Shhhhh...", "Rad! ", "Cold blooded. ", "Procrastinacious! ", "Whatever. "]);
 }
