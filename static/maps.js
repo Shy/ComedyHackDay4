@@ -33,7 +33,7 @@ function initialize() {
             "stylers": [{
                 "visibility": "on"
             }, {
-                "color": "#e3e3e3"
+                "color": "#ffffff"
             }]
         }, {
             "featureType": "landscape.natural",
@@ -93,7 +93,7 @@ function initialize() {
             "featureType": "water",
             "elementType": "geometry",
             "stylers": [{
-                "color": "#FFFFFF"
+                "color": "rgba(0,179,253,.1)"
             }]
         }, {
             "featureType": "water",
