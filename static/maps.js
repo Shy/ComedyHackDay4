@@ -33,7 +33,7 @@ function initialize() {
             "stylers": [{
                 "visibility": "on"
             }, {
-                "color": "#e3e3e3"
+                "color": "#ffffff"
             }]
         }, {
             "featureType": "landscape.natural",
@@ -93,7 +93,7 @@ function initialize() {
             "featureType": "water",
             "elementType": "geometry",
             "stylers": [{
-                "color": "#FFFFFF"
+                "color": "rgba(0,179,253,.1)"
             }]
         }, {
             "featureType": "water",
@@ -141,10 +141,13 @@ function requestRoute(start, end, mode) {
   directionsService.route(request, function (response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
       embiggenRoute(response.routes[0]);
-      if (minutesAlreadyExcused == minutesExcused)
+      if (minutesAlreadyExcused == minutesExcused) {
         directionsDisplay.setDirections(response);
-      else
+        document.getElementById('intro').innerHTML = '';
+        document.getElementById('intro').style.padding = "0px 0px 0px 0px";
+      } else {
         requestRoute(start, end, mode);
+      }
     }
   });
 }
