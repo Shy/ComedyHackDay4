@@ -138,6 +138,7 @@ tbody tr {padding:40px;box-sizing:border-box;-moz-box-sizing:border-box;}
 img.adp-marker {margin-left:10px;box-sizing:border-box;-moz-box-sizing:border-box;}
 .adp-summary {font-family: 'Archivo Narrow', sans-serif;font-size:24px;}
 .adp-step, .adp-substep {padding:10px;box-sizing:border-box;-moz-box-sizing:border-box;}
+div.form-group input, div.form-group select  {font-size:16px;}
 @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
         color: #777;
