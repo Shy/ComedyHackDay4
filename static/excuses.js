@@ -108,11 +108,51 @@ function findExcuses() {
                 description: "School Bus Crash",
                 text: "I was driving past a school just as the school bus crashed into the car ahead of it. I had to help evacuate the kids and make sure they were okay. No big deal, I didn’t even stick around because I’m not looking for a medal or anything.",
                 delayInMinutes: 58
+              },
+              {
+                id: "13",
+                name: "Bus handicap brooklyn",
+                location: "",
+                description: "Bus handicap brooklyn",
+                text: "Three separate people in wheelchairs had to get on my bus, one stop after another, and they all got off two stops later.",
+                delayInMinutes: 49
+              },
+              {
+                id: "14",
+                name: "Queens Bus Fight",
+                location: "",
+                description: "Queens Bus Fight",
+                text: "A taxi was parked in a bus stop and the bus driver got out and got into a fight with the taxi driver.",
+                delayInMinutes: 24
+              },
+              {
+                id: "15",
+                name: "Old Lady NYC hospital",
+                location: "",
+                description: "School Bus Crash",
+                text: "An old lady sitting next to me had a heart attack on the bus. I had to sit there with her until she the paramedics came",
+                delayInMinutes: 42
+              },
+              {
+                id: "16",
+                name: "School Bus Crash",
+                location: "",
+                description: "School Bus Crash",
+                text: "The bus I was on broke down, and a tow truck had to come and get it. Then the tow truck broke down and stopped traffic. So then a tow truck came to get the tow truck and the bus, and that broke down. I think it’ll be on the news tonight.",
+                delayInMinutes: 89
+              },
+              {
+                id: "17",
+                name: "34th Street Subway Fight",
+                location: "",
+                description: "34th Street Subway Fight",
+                text: "I got out of my seat to give it to  a pregnant lady, and this guy stole it. Even though he was twice my size, I felt like I couldn’t just stand by and let that happen. Long story short, he apologized.",
+                delayInMinutes: 58
               }
 
             ];
             var temp = {
-              id: "1",
+              id: "17",
               name: "The Meatball Shop",
               location: "",
               description: "Dropped balls",
@@ -120,6 +160,7 @@ function findExcuses() {
               delayInMinutes: 10
             };
             for (var key in data.items) {
+              temp.id = temp.id += 1;
               temp.name = data.items[key].name;
               temp.description = data.items[key].location;
               temp.text = data.items[key].shortDesc;
