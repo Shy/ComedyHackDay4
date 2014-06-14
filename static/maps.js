@@ -1,4 +1,5 @@
 var map;
+var manhattan;
 var directionsDisplay;
 var directionsService;
 var stepDisplay;
@@ -27,6 +28,8 @@ function initialize() {
 
   // Instantiate an info window to hold step text.
   stepDisplay = new google.maps.InfoWindow();
+
+  loadExcuses();
 }
 
 function calcRoute() {
@@ -36,8 +39,9 @@ function calcRoute() {
     markerArray[i].setMap(null);
   }
 
-  // Now, clear the array itself.
+  // Now, clear our environment
   markerArray = [];
+  clearRouting();
 
   // Retrieve the start and end locations and create
   // a DirectionsRequest using WALKING directions.
@@ -63,18 +67,20 @@ function calcRoute() {
 }
 
 function showSteps(directionResult) {
+  // Extract the initial route and transform it
+  var initialRoute = directionResult.routes[0].legs[0];
+  var excuseRoute = embiggenRoute(initialRoute);
+
   // For each step, place a marker, and add the text to the marker's
   // info window. Also attach the marker to an array so we
   // can keep track of it and remove it when calculating new
   // routes.
-  var myRoute = directionResult.routes[0].legs[0];
-
-  for (var i = 0; i < myRoute.steps.length; i++) {
+  for (var i = 0; i < excuseRoute.steps.length; i++) {
     var marker = new google.maps.Marker({
-      position: myRoute.steps[i].start_location,
+      position: excuseRoute.steps[i].start_location,
       map: map
     });
-    attachInstructionText(marker, myRoute.steps[i].instructions);
+    attachInstructionText(marker, excuseRoute.steps[i].instructions);
     markerArray[i] = marker;
   }
 }
