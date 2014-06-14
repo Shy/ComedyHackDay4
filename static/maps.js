@@ -41,10 +41,11 @@ function calcRoute() {
   // a DirectionsRequest using WALKING directions.
   var start = document.getElementById('start').value;
   var end = document.getElementById('end').value;
+  var selectedMode = document.getElementById('mode').value;
   var request = {
       origin: start,
       destination: end,
-      travelMode: google.maps.TravelMode.WALKING
+      travelMode: google.maps.TravelMode[selectedMode]
   };
 
   // Route the directions and pass the response to a
@@ -71,7 +72,7 @@ function showSteps(directionResult) {
       position: myRoute.steps[i].start_location,
       map: map
     });
-    attachInstructionText(marker, myRoute.steps[i].instructions + " Shy's Placeholder text");
+    attachInstructionText(marker, myRoute.steps[i].instructions);
     markerArray[i] = marker;
   }
 }
