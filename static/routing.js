@@ -3,8 +3,6 @@ var geocoder = new google.maps.Geocoder();
 var minutesDelayed;
 var minutesExcused;
 var waypoints;
-var excusesUsed;
-var availableExcuses;
 
 function clearRouting() {
   minutesDelayed = parseInt(document.getElementById('time').value);
