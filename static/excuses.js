@@ -160,6 +160,32 @@ function imagineBullshitExcuses() {
 
 function findRealExcuses() {
   findNyCalendarExcuses();
+  findMLAExcuses();
+}
+
+function findMLAExcuses(){
+  function reqListener () {
+    txt = this.responseText;
+    if (window.DOMParser)
+    {
+    parser=new DOMParser();
+    xmlDoc=parser.parseFromString(txt,"text/xml");
+    }
+  else // Internet Explorer
+    {
+    xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+    xmlDoc.async=false;
+    xmlDoc.loadXML(txt);
+    }
+    console.log(xmlDoc.getElementsByTagName("name")[0].innerHTML);
+    console.log(xmlDoc.getElementsByTagName("status")[0].innerHTML);
+    console.log(xmlDoc.getElementsByTagName("text")[0].innerHTML);
+  }
+  var oReq = new XMLHttpRequest();
+  oReq.onload = reqListener;
+  oReq.open("get", "static/serviceStatus.txt", true);
+  oReq.send();
+
 }
 
 function findNyCalendarExcuses() {
