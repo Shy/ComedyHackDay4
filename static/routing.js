@@ -7,7 +7,7 @@ var excusesUsed;
 var availableExcuses;
 
 function clearRouting() {
-  minutesDelayed = 60;
+  minutesDelayed = parseInt(document.getElementById('time').value);
   minutesExcused = 0;
   waypoints = [];
   excusesUsed = [];
